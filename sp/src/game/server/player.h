@@ -256,6 +256,8 @@ public:
 	virtual void			SetModel( const char *szModelName );
 	void					SetBodyPitch( float flPitch );
 
+	virtual void CreateHandModel(int viewmodelindex = 1, int iOtherVm = 0);
+
 	virtual void			UpdateOnRemove( void );
 
 	static CBasePlayer		*CreatePlayer( const char *className, edict_t *ed );

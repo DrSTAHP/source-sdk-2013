@@ -47,6 +47,9 @@
 #include "filters.h"
 #include "tier0/icommandline.h"
 
+#define HANDS_MODEL "models/player/arms/c_arms_gordon.mdl"
+#define EMPTY_HANDS "models/weapons/hands/v_nothing.mdl"
+
 #ifdef HL2_EPISODIC
 #include "npc_alyx_episodic.h"
 #endif
@@ -435,6 +438,8 @@ void CHL2_Player::Precache( void )
 	PrecacheScriptSound( "HL2Player.TrainUse" );
 	PrecacheScriptSound( "HL2Player.Use" );
 	PrecacheScriptSound( "HL2Player.BurnPain" );
+	PrecacheModel(EMPTY_HANDS);
+	PrecacheModel(HANDS_MODEL);
 }
 
 //-----------------------------------------------------------------------------
@@ -1125,6 +1130,9 @@ void CHL2_Player::Spawn(void)
 
 	if ( !IsSuitEquipped() )
 		 StartWalking();
+
+	GetViewModel(0)->SetModel(EMPTY_HANDS);
+	GetViewModel(1)->SetModel(HANDS_MODEL);
 
 	SuitPower_SetCharge( 100 );
 
